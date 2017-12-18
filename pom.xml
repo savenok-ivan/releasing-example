@@ -1,64 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jazzteam</groupId>
-	<artifactId>releasing-example</artifactId>
-	<packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jazzteam</groupId>
+    <artifactId>releasing-example</artifactId>
+    <packaging>pom</packaging>
+    <version>0.1-SNAPSHOT</version>
+    <scm>
+        <url>https://github.com/savenok-ivan/releasing-example</url>
+        <developerConnection>scm:git:https://github.com/savenok-ivan/releasing-example.git</developerConnection>
+    </scm>
 
-	<!-- При работе с релизами эта версия увеличивается автоматически, как и 
-		версии родительского проекта в модулях module-one и module-two. Подробнее 
-		про релизы описано здесь http://wiki.jazzteam.org/index.php?title=Maven#.D0.A0.D0.B0.D0.B1.D0.BE.D1.82.D0.B0_.D1.81_.D1.80.D0.B5.D0.BB.D0.B8.D0.B7.D0.B0.D0.BC.D0.B8_.D0.B8_SNAPSHOT-.D0.B0.D0.BC.D0.B8_.D0.B2_maven. 
-		Релиз делается командой mvn release:prepare Можно делать mvn release:clean 
-		release:prepare Необходимое условие: весь код должен быть закомитан. Релиз 
-		не будет собираться если есть незакомитаные изменения. -->
-	<version>2.0</version>
 
-	<scm>
-		<!-- Описываем путь к репозиторию. Maven будет комитать изменённые pom-файлы 
-			сюда. При выполнении релиза, maven создаст тег с версией проекта (без -SNAPSHOT) 
-			и закомитает туда слепок. -->
-		<developerConnection>scm:svn:https://178.79.169.112/projects/reusablesources/tags/2.0</developerConnection>
-		<url>https://178.79.169.112/projects/reusablesources/tags/2.0</url>
-	</scm>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.1</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<distributionManagement>
-		<repository>
-			<id>nexus</id>
-			<name>jazzteam release repository</name>
-			<url>http://178.79.169.112:8081/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus</id>
-			<name>jazzteam snapshot repository</name>
-			<url>http://178.79.169.112:8081/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.1</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<!-- Указываем версию 2.3.1, т.к. по умолчанию берётся 2.0, которая имеет 
-				баг -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.3.1</version>
-			</plugin>
-		</plugins>
-	</build>
-
-	<modules>
-		<module>module-one</module>
-		<module>module-two</module>
-	</modules>
+    <modules>
+        <module>module-one</module>
+        <module>module-two</module>
+    </modules>
 </project>

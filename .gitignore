@@ -2,3 +2,9 @@
 .gitignore
 .idea/
 releasing-example.iml
+module-one/pom.xml.releaseBackup
+module-one/target/
+module-two/pom.xml.releaseBackup
+module-two/target/
+pom.xml.releaseBackup
+release.properties

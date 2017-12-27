@@ -9,7 +9,7 @@
 	<parent>
 		<artifactId>releasing-example</artifactId>
 		<groupId>org.jazzteam</groupId>
-		<version>0.7-SNAPSHOT</version><!-- Версия изменяется автоматически при выполнении релиза -->
+		<version>0.7</version><!-- Версия изменяется автоматически при выполнении релиза -->
 	</parent>
 
 	<dependencies>

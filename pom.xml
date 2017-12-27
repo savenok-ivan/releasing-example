@@ -17,6 +17,13 @@
             <name>release repository</name>
             <url>http://localhost:8081/repository/release-repo/</url>
         </repository>
+
+        <snapshotRepository>
+            <id>nexus-releases</id>
+            <name>snapshot repository</name>
+            <url>http://localhost:8081/repository/snapshot-repo/</url>
+        </snapshotRepository>
+
     </distributionManagement>
 
     <dependencyManagement>

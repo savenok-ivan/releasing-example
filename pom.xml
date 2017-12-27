@@ -11,6 +11,13 @@
     <tag>HEAD</tag>
   </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>release repository</name>
+            <url>http://localhost:8081/repository/release-repo/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>

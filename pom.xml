@@ -8,7 +8,6 @@
     <scm>
         <url>https://github.com/savenok-ivan/releasing-example</url>
         <developerConnection>scm:git:https://github.com/savenok-ivan/releasing-example.git</developerConnection>
-<!--        <tag>HEAD</tag>-->
     <tag>HEAD</tag>
   </scm>
 
